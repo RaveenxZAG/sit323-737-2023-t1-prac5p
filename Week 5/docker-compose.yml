@@ -1,9 +1,12 @@
 version: '3'
 services:
   app:
-    image: nginx
+    build: .
+    ports:
+      - "3000:3000"
+    image: raveenzag123/myapp
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000/add?num1=1&num2=2"]
       interval: 30s
       timeout: 10s
       retries: 3
